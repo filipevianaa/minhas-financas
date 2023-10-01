@@ -27,4 +27,18 @@ class TipoDespesasFixasController extends Controller
         return $model->create($req);
 
     }
+
+    public function edit(Request $req)
+    {
+        $model = new TipoDespesasFixasModel();
+        return $model->edit($req);
+
+    }
+
+    public function disable(Request $req)
+    {
+        $model = new TipoDespesasFixasModel();
+        return $model->disable($req);
+
+    }
 }

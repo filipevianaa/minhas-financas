@@ -29,4 +29,18 @@ class TipoDespesasFixasModel extends Model
 
         return DB::insert($query, $values);
     }
+
+    public function edit($req)
+    {
+        $query = "UPDATE cad_tipos_despesas_fixas SET descricao_tdf = ?, data_cobranca_tdf = ?, dta_upd_tdf = ? WHERE cod_tipo_desp_tdf = ?";
+        $values = [$req->descricao_tdf, $req->data_cobranca_tdf, $req->dta_upd_tdf, $req->id];
+        return DB::update($query, $values);
+    }
+
+    public function disable($req)
+    {
+        $query = "UPDATE cad_tipos_despesas_fixas SET id_ativo_tdf = ? WHERE cod_tipo_desp_tdf = ?";
+        $values = [$req->status, $req->id];
+        return DB::update($query, $values);
+    }
 }
