@@ -15,30 +15,27 @@ class TipoDespesasVariaveisController extends Controller
         return $model->listAll();
     }
 
-    // public function show(Request $req)
-    // {
-    //     $model = new TipoDespesasVariaveisModel();
-    //     return $model->getById($req->id);
-    // }
+    public function show(Request $req)
+    {
+        $model = new TipoDespesasVariaveisModel();
+        return $model->getById($req->id);
+    }
 
-    // public function create(Request $req)
-    // {
-    //     $model = new TipoDespesasVariaveisModel();
-    //     return $model->create($req);
+    public function create(Request $req)
+    {
+        $model = new TipoDespesasVariaveisModel();
+        return $model->create($req);
+    }
 
-    // }
+    public function edit(Request $req)
+    {
+        $model = new TipoDespesasVariaveisModel();
+        return $model->edit($req);
+    }
 
-    // public function edit(Request $req)
-    // {
-    //     $model = new TipoDespesasVariaveisModel();
-    //     return $model->edit($req);
-
-    // }
-
-    // public function disable(Request $req)
-    // {
-    //     $model = new TipoDespesasVariaveisModel();
-    //     return $model->disable($req);
-
-    // }
+    public function disable(Request $req)
+    {
+        $model = new TipoDespesasVariaveisModel();
+        return $model->disable($req);
+    }
 }
