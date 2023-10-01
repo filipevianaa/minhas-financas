@@ -9,33 +9,35 @@ use Illuminate\Support\Facades\DB;
 
 class TipoDespesasVariaveisController extends Controller
 {
+    private $model;
+
+    public function __construct()
+    {
+        $this->model = new TipoDespesasVariaveisModel();
+    }
+
     public function index()
     {
-        $model = new TipoDespesasVariaveisModel();
-        return $model->listAll();
+        return $this->model->listAll();
     }
 
     public function show(Request $req)
     {
-        $model = new TipoDespesasVariaveisModel();
-        return $model->getById($req->id);
+        return $this->model->getById($req->id);
     }
 
     public function create(Request $req)
     {
-        $model = new TipoDespesasVariaveisModel();
-        return $model->create($req);
+        return $this->model->create($req);
     }
 
     public function edit(Request $req)
     {
-        $model = new TipoDespesasVariaveisModel();
-        return $model->edit($req);
+        return $this->model->edit($req);
     }
 
     public function disable(Request $req)
     {
-        $model = new TipoDespesasVariaveisModel();
-        return $model->disable($req);
+        return $this->model->disable($req);
     }
 }
