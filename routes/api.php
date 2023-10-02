@@ -36,5 +36,7 @@ Route::put('/despesas-variaveis/{id}', [TipoDespesasVariaveisController::class, 
 Route::put('/despesas-variaveis/{id}/{status}', [TipoDespesasVariaveisController::class, 'disable'])->name('despesas-variavies.disable');
 
 //associação de despesa fixa e valor
-Route::get('/despesas-fixas/{id}/valor', [RelDespesaFixaValorController::class, 'index'])->name('despesas-fixas.index');
-Route::post('/despesas-fixas/{id}/valor', [RelDespesaFixaValorController::class, 'create'])->name('despesas-fixas.create');
+Route::get('/despesas-fixas/{id}/valor', [RelDespesaFixaValorController::class, 'index'])->name('despesas-fixas-valor.index');
+Route::post('/despesas-fixas/{id}/valor', [RelDespesaFixaValorController::class, 'create'])->name('despesas-fixas-valor.create');
+Route::put('/despesas-fixas/{id}/valor/{id_valor}', [RelDespesaFixaValorController::class, 'edit'])->name('despesas-fixas-valor.edit');
+Route::put('/despesas-fixas/{id}/valor/{id_valor}/{status}', [RelDespesaFixaValorController::class, 'disable'])->name('despesas-fixas-valor.disable');

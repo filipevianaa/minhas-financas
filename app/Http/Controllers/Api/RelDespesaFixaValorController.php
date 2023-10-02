@@ -24,4 +24,14 @@ class RelDespesaFixaValorController extends Controller
     {
         return $this->model->create($req);
     }
+
+    public function edit(Request $req)
+    {
+        return $this->model->edit($req);
+    }
+
+    public function disable(Request $req)
+    {
+        return $this->model->disable($req);
+    }
 }
