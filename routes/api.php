@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\RelDespesaFixaValorController;
+use App\Http\Controllers\Api\RelDespesaVariavelValorController;
 use App\Http\Controllers\Api\TipoDespesasFixasController;
 use App\Http\Controllers\Api\TipoDespesasVariaveisController;
 use Illuminate\Http\Request;
@@ -40,3 +41,12 @@ Route::get('/despesas-fixas/{id}/valor', [RelDespesaFixaValorController::class, 
 Route::post('/despesas-fixas/{id}/valor', [RelDespesaFixaValorController::class, 'create'])->name('despesas-fixas-valor.create');
 Route::put('/despesas-fixas/{id}/valor/{id_valor}', [RelDespesaFixaValorController::class, 'edit'])->name('despesas-fixas-valor.edit');
 Route::put('/despesas-fixas/{id}/valor/{id_valor}/{status}', [RelDespesaFixaValorController::class, 'disable'])->name('despesas-fixas-valor.disable');
+
+
+//associação de despesa variavel e valor
+Route::get('/despesas-variaveis/{id}/valor', [RelDespesaVariavelValorController::class, 'index'])->name('despesas-variaveis-valor.index');
+Route::post('/despesas-variaveis/{id}/valor', [RelDespesaVariavelValorController::class, 'create'])->name('despesas-variaveis-valor.create');
+Route::put('/despesas-variaveis/{id}/valor/{id_valor}', [RelDespesaVariavelValorController::class, 'edit'])->name('despesas-variaveis-valor.edit');
+Route::put('/despesas-variaveis/{id}/valor/{id_valor}/{status}', [RelDespesaVariavelValorController::class, 'disable'])->name('despesas-variaveis-valor.disable');
+
+// cadastro de despesas específicas pontuais
