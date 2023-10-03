@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CadDespesaEspecificaPontualController;
 use App\Http\Controllers\Api\RelDespesaFixaValorController;
 use App\Http\Controllers\Api\RelDespesaVariavelValorController;
 use App\Http\Controllers\Api\TipoDespesasFixasController;
@@ -50,3 +51,8 @@ Route::put('/despesas-variaveis/{id}/valor/{id_valor}', [RelDespesaVariavelValor
 Route::put('/despesas-variaveis/{id}/valor/{id_valor}/{status}', [RelDespesaVariavelValorController::class, 'disable'])->name('despesas-variaveis-valor.disable');
 
 // cadastro de despesas específicas pontuais
+Route::get('/despesas-esp-pontual', [CadDespesaEspecificaPontualController::class, 'index'])->name('despesas-esp-pontual.index');
+Route::get('/despesas-esp-pontual/{id}', [CadDespesaEspecificaPontualController::class, 'show'])->name('despesas-esp-pontual.show');
+Route::post('/despesas-esp-pontual', [CadDespesaEspecificaPontualController::class, 'create'])->name('despesas-esp-pontual.create');
+Route::put('/despesas-esp-pontual/{id}', [CadDespesaEspecificaPontualController::class, 'edit'])->name('despesas-esp-pontual.edit');
+Route::put('/despesas-esp-pontual/{id}/{status}', [CadDespesaEspecificaPontualController::class, 'disable'])->name('despesas-esp-pontual.disable');
