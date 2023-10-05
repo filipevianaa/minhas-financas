@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\RelDespesaVariavelValorController;
 use App\Http\Controllers\Api\TipoDespesasFixasController;
 use App\Http\Controllers\Api\TipoDespesasVariaveisController;
 use App\Http\Controllers\Api\TipoReceitasFixasController;
+use App\Http\Controllers\Api\TipoReceitasVariaveisController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -72,3 +73,10 @@ Route::get('/receitas-fixas/{id}', [TipoReceitasFixasController::class, 'show'])
 Route::post('/receitas-fixas', [TipoReceitasFixasController::class, 'create'])->name('receitas-fixas.create');
 Route::put('/receitas-fixas/{id}', [TipoReceitasFixasController::class, 'edit'])->name('receitas-fixas.edit');
 Route::put('/receitas-fixas/{id}/{status}', [TipoReceitasFixasController::class, 'disable'])->name('receitas-fixas.disable');
+
+//tipos receitas variaveis
+Route::get('/receitas-variaveis', [TipoReceitasVariaveisController::class, 'index'])->name('receitas-variavies.index');
+Route::get('/receitas-variaveis/{id}', [TipoReceitasVariaveisController::class, 'show'])->name('receitas-variavies.show');
+Route::post('/receitas-variaveis', [TipoReceitasVariaveisController::class, 'create'])->name('receitas-variavies.create');
+Route::put('/receitas-variaveis/{id}', [TipoReceitasVariaveisController::class, 'edit'])->name('receitas-variavies.edit');
+Route::put('/receitas-variaveis/{id}/{status}', [TipoReceitasVariaveisController::class, 'disable'])->name('receitas-variavies.disable');
