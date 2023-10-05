@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CadDespesaEspecificaParceladaController;
 use App\Http\Controllers\Api\CadDespesaEspecificaPontualController;
 use App\Http\Controllers\Api\RelDespesaFixaValorController;
 use App\Http\Controllers\Api\RelDespesaVariavelValorController;
@@ -56,3 +57,10 @@ Route::get('/despesas-esp-pontual/{id}', [CadDespesaEspecificaPontualController:
 Route::post('/despesas-esp-pontual', [CadDespesaEspecificaPontualController::class, 'create'])->name('despesas-esp-pontual.create');
 Route::put('/despesas-esp-pontual/{id}', [CadDespesaEspecificaPontualController::class, 'edit'])->name('despesas-esp-pontual.edit');
 Route::put('/despesas-esp-pontual/{id}/{status}', [CadDespesaEspecificaPontualController::class, 'disable'])->name('despesas-esp-pontual.disable');
+
+// cadastro de despesas específicas parceladas
+Route::get('/despesas-esp-parcelada', [CadDespesaEspecificaParceladaController::class, 'index'])->name('despesas-esp-parcelada.index');
+Route::get('/despesas-esp-parcelada/{id}', [CadDespesaEspecificaParceladaController::class, 'show'])->name('despesas-esp-parcelada.show');
+Route::post('/despesas-esp-parcelada', [CadDespesaEspecificaParceladaController::class, 'create'])->name('despesas-esp-parcelada.create');
+Route::put('/despesas-esp-parcelada/{id}', [CadDespesaEspecificaParceladaController::class, 'edit'])->name('despesas-esp-parcelada.edit');
+Route::put('/despesas-esp-parcelada/{id}/{status}', [CadDespesaEspecificaParceladaController::class, 'disable'])->name('despesas-esp-parcelada.disable');
