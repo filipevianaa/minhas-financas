@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\RelDespesaFixaValorController;
 use App\Http\Controllers\Api\RelDespesaVariavelValorController;
 use App\Http\Controllers\Api\TipoDespesasFixasController;
 use App\Http\Controllers\Api\TipoDespesasVariaveisController;
+use App\Http\Controllers\Api\TipoReceitasFixasController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -64,3 +65,10 @@ Route::get('/despesas-esp-parcelada/{id}', [CadDespesaEspecificaParceladaControl
 Route::post('/despesas-esp-parcelada', [CadDespesaEspecificaParceladaController::class, 'create'])->name('despesas-esp-parcelada.create');
 Route::put('/despesas-esp-parcelada/{id}', [CadDespesaEspecificaParceladaController::class, 'edit'])->name('despesas-esp-parcelada.edit');
 Route::put('/despesas-esp-parcelada/{id}/{status}', [CadDespesaEspecificaParceladaController::class, 'disable'])->name('despesas-esp-parcelada.disable');
+
+//tipos receitas fixas
+Route::get('/receitas-fixas', [TipoReceitasFixasController::class, 'index'])->name('receitas-fixas.index');
+Route::get('/receitas-fixas/{id}', [TipoReceitasFixasController::class, 'show'])->name('receitas-fixas.show');
+Route::post('/receitas-fixas', [TipoReceitasFixasController::class, 'create'])->name('receitas-fixas.create');
+Route::put('/receitas-fixas/{id}', [TipoReceitasFixasController::class, 'edit'])->name('receitas-fixas.edit');
+Route::put('/receitas-fixas/{id}/{status}', [TipoReceitasFixasController::class, 'disable'])->name('receitas-fixas.disable');
