@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CadDespesaEspecificaParceladaController;
 use App\Http\Controllers\Api\CadDespesaEspecificaPontualController;
 use App\Http\Controllers\Api\RelDespesaFixaValorController;
 use App\Http\Controllers\Api\RelDespesaVariavelValorController;
+use App\Http\Controllers\Api\RelReceitaFixaValorController;
 use App\Http\Controllers\Api\TipoDespesasFixasController;
 use App\Http\Controllers\Api\TipoDespesasVariaveisController;
 use App\Http\Controllers\Api\TipoReceitasFixasController;
@@ -80,3 +81,9 @@ Route::get('/receitas-variaveis/{id}', [TipoReceitasVariaveisController::class, 
 Route::post('/receitas-variaveis', [TipoReceitasVariaveisController::class, 'create'])->name('receitas-variavies.create');
 Route::put('/receitas-variaveis/{id}', [TipoReceitasVariaveisController::class, 'edit'])->name('receitas-variavies.edit');
 Route::put('/receitas-variaveis/{id}/{status}', [TipoReceitasVariaveisController::class, 'disable'])->name('receitas-variavies.disable');
+
+//associação de receita fixa e valor
+Route::get('/receitas-fixas/{id}/valor', [RelReceitaFixaValorController::class, 'index'])->name('receitas-fixas-valor.index');
+Route::post('/receitas-fixas/{id}/valor', [RelReceitaFixaValorController::class, 'create'])->name('receitas-fixas-valor.create');
+Route::put('/receitas-fixas/{id}/valor/{id_valor}', [RelReceitaFixaValorController::class, 'edit'])->name('receitas-fixas-valor.edit');
+Route::put('/receitas-fixas/{id}/valor/{id_valor}/{status}', [RelReceitaFixaValorController::class, 'disable'])->name('receitas-fixas-valor.disable');
