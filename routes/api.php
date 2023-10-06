@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Api\CadDespesaEspecificaParceladaController;
 use App\Http\Controllers\Api\CadDespesaEspecificaPontualController;
+use App\Http\Controllers\Api\CadReceitaEspecificaPontualController;
 use App\Http\Controllers\Api\RelDespesaFixaValorController;
 use App\Http\Controllers\Api\RelDespesaVariavelValorController;
 use App\Http\Controllers\Api\RelReceitaFixaValorController;
+use App\Http\Controllers\Api\RelReceitaVariavelValorController;
 use App\Http\Controllers\Api\TipoDespesasFixasController;
 use App\Http\Controllers\Api\TipoDespesasVariaveisController;
 use App\Http\Controllers\Api\TipoReceitasFixasController;
@@ -47,7 +49,6 @@ Route::post('/despesas-fixas/{id}/valor', [RelDespesaFixaValorController::class,
 Route::put('/despesas-fixas/{id}/valor/{id_valor}', [RelDespesaFixaValorController::class, 'edit'])->name('despesas-fixas-valor.edit');
 Route::put('/despesas-fixas/{id}/valor/{id_valor}/{status}', [RelDespesaFixaValorController::class, 'disable'])->name('despesas-fixas-valor.disable');
 
-
 //associação de despesa variavel e valor
 Route::get('/despesas-variaveis/{id}/valor', [RelDespesaVariavelValorController::class, 'index'])->name('despesas-variaveis-valor.index');
 Route::post('/despesas-variaveis/{id}/valor', [RelDespesaVariavelValorController::class, 'create'])->name('despesas-variaveis-valor.create');
@@ -87,3 +88,16 @@ Route::get('/receitas-fixas/{id}/valor', [RelReceitaFixaValorController::class, 
 Route::post('/receitas-fixas/{id}/valor', [RelReceitaFixaValorController::class, 'create'])->name('receitas-fixas-valor.create');
 Route::put('/receitas-fixas/{id}/valor/{id_valor}', [RelReceitaFixaValorController::class, 'edit'])->name('receitas-fixas-valor.edit');
 Route::put('/receitas-fixas/{id}/valor/{id_valor}/{status}', [RelReceitaFixaValorController::class, 'disable'])->name('receitas-fixas-valor.disable');
+
+//associação de receita variavel e valor
+Route::get('/receitas-variaveis/{id}/valor', [RelReceitaVariavelValorController::class, 'index'])->name('receitas-variaveis-valor.index');
+Route::post('/receitas-variaveis/{id}/valor', [RelReceitaVariavelValorController::class, 'create'])->name('receitas-variaveis-valor.create');
+Route::put('/receitas-variaveis/{id}/valor/{id_valor}', [RelReceitaVariavelValorController::class, 'edit'])->name('receitas-variaveis-valor.edit');
+Route::put('/receitas-variaveis/{id}/valor/{id_valor}/{status}', [RelReceitaVariavelValorController::class, 'disable'])->name('receitas-variaveis-valor.disable');
+
+// cadastro de receitas específicas pontuais
+Route::get('/receitas-esp-pontual', [CadReceitaEspecificaPontualController::class, 'index'])->name('receitas-esp-pontual.index');
+Route::get('/receitas-esp-pontual/{id}', [CadReceitaEspecificaPontualController::class, 'show'])->name('receitas-esp-pontual.show');
+Route::post('/receitas-esp-pontual', [CadReceitaEspecificaPontualController::class, 'create'])->name('receitas-esp-pontual.create');
+Route::put('/receitas-esp-pontual/{id}', [CadReceitaEspecificaPontualController::class, 'edit'])->name('receitas-esp-pontual.edit');
+Route::put('/receitas-esp-pontual/{id}/{status}', [CadReceitaEspecificaPontualController::class, 'disable'])->name('receitas-esp-pontual.disable');
