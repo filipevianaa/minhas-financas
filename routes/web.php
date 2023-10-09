@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\RelDespesaFixaValorController;
-use App\Http\Controllers\TipoDespesasFixasController;
+use App\Http\Controllers\TipoDespesasMensais;
 use App\Http\Controllers\TipoDespesasVariaveisController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +21,8 @@ Route::get('/', function () {
 });
 
 //tipos despesas fixas
-Route::get('/despesas-fixas', [TipoDespesasFixasController::class, 'index'])->name('despesas-fixas.index');
+Route::get('/despesas-mensais', [TipoDespesasMensais::class, 'index'])->name('despesas-mensais.index');
+Route::post('/despesas-mensais', [TipoDespesasMensais::class, 'create'])->name('despesas-mensais.create');
 
 //tipos despesas variaveis
 Route::get('/despesas-variaveis', [TipoDespesasVariaveisController::class, 'index'])->name('despesas-variaveis.index');

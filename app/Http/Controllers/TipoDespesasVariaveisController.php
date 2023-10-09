@@ -14,10 +14,4 @@ class TipoDespesasVariaveisController extends Controller
     {
         $this->api = new ApiTipoDespesasVariaveisController();
     }
-
-    public function index()
-    {
-        $tiposDespesasVariaveis = $this->api->index();
-        dd($tiposDespesasVariaveis);
-    }
 }

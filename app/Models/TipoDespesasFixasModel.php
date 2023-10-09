@@ -12,7 +12,8 @@ class TipoDespesasFixasModel extends Model
 
     public function listAll()
     {
-        return DB::select('SELECT * FROM cad_tipos_despesas_fixas');
+        $query = "select * from cad_tipos_despesas_fixas";
+        return DB::select($query);
     }
 
     public function getById($id)
@@ -22,10 +23,11 @@ class TipoDespesasFixasModel extends Model
 
     public function create($req)
     {
-        $query = "INSERT INTO cad_tipos_despesas_fixas (cod_user_tdf, descricao_tdf, data_cobranca_tdf, dta_ins_tdf, dta_upd_tdf, id_ativo_tdf) 
-        VALUES (?, ?, ?, ?, ?, ?)";
+        $data_ins = date("Y-m-d");
+        $query = "INSERT INTO cad_tipos_despesas_fixas (cod_user_tdf, descricao_tdf, data_cobranca_tdf, dta_ins_tdf) 
+        VALUES (?, ?, ?, ?)";
 
-        $values = [$req->cod_user_tdf, $req->descricao_tdf, $req->data_cobranca_tdf, $req->dta_ins_tdf, $req->dta_upd_tdf, $req->id_ativo_tdf];
+        $values = [$req->cod_user_tdf, $req->descricao_tdf, $req->data_cobranca_tdf, $data_ins];
 
         return DB::insert($query, $values);
     }

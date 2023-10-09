@@ -23,10 +23,11 @@ class TipoDespesasVariaveisModel extends Model
 
     public function create($req)
     {
-        $query = "INSERT INTO cad_tipos_despesas_variaveis (cod_user_tdv, descricao_tdv, data_cobranca_tdv, dta_ins_tdv, dta_upd_tdv, id_ativo_tdv) 
-        VALUES (?, ?, ?, ?, ?, ?)";
+        $data_ins = date("Y-m-d");
+        $query = "INSERT INTO cad_tipos_despesas_variaveis (cod_user_tdv, descricao_tdv, data_cobranca_tdv, dta_ins_tdv) 
+        VALUES (?, ?, ?, ?)";
 
-        $values = [$req->cod_user_tdv, $req->descricao_tdv, $req->data_cobranca_tdv, $req->dta_ins_tdv, $req->dta_upd_tdv, $req->id_ativo_tdv];
+        $values = [$req->cod_user_tdv, $req->descricao_tdv, $req->data_cobranca_tdv, $data_ins];
 
         return DB::insert($query, $values);
     }

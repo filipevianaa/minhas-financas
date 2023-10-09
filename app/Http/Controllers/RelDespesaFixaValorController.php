@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Api\RelDespesaFixaValorController as ApiRelDespesaFixaValorController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class RelDespesaFixaValorController extends Controller
 {
-    public function edit(Request $req)
+    private $api; 
+
+    public function __construct()
     {
-        dd($req);
+        $this->api = new ApiRelDespesaFixaValorController();
     }
 }
