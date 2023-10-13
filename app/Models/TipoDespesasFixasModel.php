@@ -34,8 +34,9 @@ class TipoDespesasFixasModel extends Model
 
     public function edit($req)
     {
+        $data_upd = date("Y-m-d");
         $query = "UPDATE cad_tipos_despesas_fixas SET descricao_tdf = ?, data_cobranca_tdf = ?, dta_upd_tdf = ? WHERE cod_tipo_desp_tdf = ?";
-        $values = [$req->descricao_tdf, $req->data_cobranca_tdf, $req->dta_upd_tdf, $req->id];
+        $values = [$req->descricao_tdf, $req->data_cobranca_tdf, $data_upd, $req->id];
         return DB::update($query, $values);
     }
 

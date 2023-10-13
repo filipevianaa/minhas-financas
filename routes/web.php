@@ -23,6 +23,8 @@ Route::get('/', function () {
 //tipos despesas fixas
 Route::get('/despesas-mensais', [TipoDespesasMensais::class, 'index'])->name('despesas-mensais.index');
 Route::post('/despesas-mensais', [TipoDespesasMensais::class, 'create'])->name('despesas-mensais.create');
+Route::post('/despesas-mensais/{tipo}/{id}', [TipoDespesasMensais::class, 'edit'])->name('despesas-mensais.edit');
+Route::get('/despesas-mensais/{tipo}/{id}/{status}', [TipoDespesasMensais::class, 'disable'])->name('despesas-mensais.disable');
 
 //tipos despesas variaveis
 Route::get('/despesas-variaveis', [TipoDespesasVariaveisController::class, 'index'])->name('despesas-variaveis.index');
