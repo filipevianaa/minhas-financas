@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Api\TipoDespesasFixasController as ApiTipoDespesasFixasController;
-use App\Http\Controllers\Api\TipoDespesasVariaveisController as ApiTipoDespesasVariaveisController;
+use App\Http\Controllers\Api\TipoReceitasFixasController as ApiTipoReceitasFixasController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class TipoDespesasMensais extends Controller
+class TipoReceitasMensais extends Controller
 {
     private $apiInitialUrl;
 
@@ -19,8 +18,8 @@ class TipoDespesasMensais extends Controller
 
     public function index(Request $req)
     {
-        $responseFixa = Http::get($this->apiInitialUrl.'despesas-fixas');
-        $responseVar = Http::get($this->apiInitialUrl.'despesas-variaveis');
+        $responseFixa = Http::get($this->apiInitialUrl.'receitas-fixas');
+        $responseVar = Http::get($this->apiInitialUrl.'receitas-variaveis');
 
         $mensagemSucesso = $req->session()->get('mensagem.sucesso');
         $req->session()->forget('mensagem.sucesso');
@@ -28,28 +27,29 @@ class TipoDespesasMensais extends Controller
         $mensagemErro = $req->session()->get('mensagem.erro');
         $req->session()->forget('mensagem.erro');
 
-        $tipoDespFixa = $responseFixa->object();
-        $tipoDespVar = $responseVar->object();
+        $tipoRecFixa = $responseFixa->object();
+        $tipoRecVar = $responseVar->object();
 
-        $data['tipoDespFixa'] = $tipoDespFixa;
-        $data['tipoDespVar'] = $tipoDespVar;
-        return view('tipoDespMensal.index')->with($data)->with('mensagemSucesso', $mensagemSucesso)->with('mensagemErro', $mensagemErro);
+        $data['tipoRecFixa'] = $tipoRecFixa;
+        $data['tipoRecVar'] = $tipoRecVar;
+        return view('tipoRecMensal.index')->with($data)->with('mensagemSucesso', $mensagemSucesso)->with('mensagemErro', $mensagemErro);
+
     }
 
     public function create(Request $req)
     {
         if($req->tipo == "1"){
-            $response = Http::post($this->apiInitialUrl."despesas-fixas", [
-                "cod_user_tdf" => 1,
-                "descricao_tdf" => $req->descricao,
-                "data_cobranca_tdf" => $req->dia
+            $response = Http::post($this->apiInitialUrl."receitas-fixas", [
+                "cod_user_trf" => 1,
+                "descricao_trf" => $req->descricao,
+                "data_receita_trf" => $req->dia
             ]);
 
         } else {
-            $response = Http::post($this->apiInitialUrl."despesas-variaveis", [
-                "cod_user_tdv" => 1,
-                "descricao_tdv" => $req->descricao,
-                "data_cobranca_tdv" => $req->dia
+            $response = Http::post($this->apiInitialUrl."receitas-variaveis", [
+                "cod_user_trv" => 1,
+                "descricao_trv" => $req->descricao,
+                "data_receita_trv" => $req->dia
             ]);
 
         }
@@ -59,7 +59,7 @@ class TipoDespesasMensais extends Controller
             $mensagem = ["mensagem.erro" => "Erro ao inserir registro"];
         }
 
-        return to_route('despesas-mensais.index')->with($mensagem);
+        return to_route('receitas-mensais.index')->with($mensagem);
     }
 
     public function edit(Request $req)
@@ -67,16 +67,16 @@ class TipoDespesasMensais extends Controller
         if($req->tipo == "1"){
             $response = Http::withUrlParameters([
                 "id" => $req->id
-            ])->put($this->apiInitialUrl."despesas-fixas/{id}", [
-                "descricao_tdf" => $req->descricao,
-                "data_cobranca_tdf" => $req->dia
+            ])->put($this->apiInitialUrl."receitas-fixas/{id}", [
+                "descricao_trf" => $req->descricao,
+                "data_receita_trf" => $req->dia
             ]);
         } else {
             $response = Http::withUrlParameters([
                 "id" => $req->id
-            ])->put($this->apiInitialUrl."despesas-variaveis/{id}", [
-                "descricao_tdv" => $req->descricao,
-                "data_cobranca_tdv" => $req->dia
+            ])->put($this->apiInitialUrl."receitas-variaveis/{id}", [
+                "descricao_trv" => $req->descricao,
+                "data_receita_trv" => $req->dia
             ]);
         }
 
@@ -86,23 +86,21 @@ class TipoDespesasMensais extends Controller
             $mensagem = ["mensagem.erro" => "Erro ao alterar registro"];
         }
 
-        return to_route('despesas-mensais.index')->with($mensagem);
-        
+        return to_route('receitas-mensais.index')->with($mensagem);
     }
 
     public function disable(Request $req)
     {
-        // dd($req);
         if($req->tipo == '1'){
             $response = Http::withUrlParameters([
                 "id" => $req->id,
                 "status" => $req->status,
-            ])->put($this->apiInitialUrl."despesas-fixas/{id}/{status}");
+            ])->put($this->apiInitialUrl."receitas-fixas/{id}/{status}");
         } else {
             $response = Http::withUrlParameters([
                 "id" => $req->id,
                 "status" => $req->status,
-            ])->put($this->apiInitialUrl."despesas-variaveis/{id}/{status}");
+            ])->put($this->apiInitialUrl."receitas-variaveis/{id}/{status}");
         }
 
         if($response){
@@ -111,6 +109,6 @@ class TipoDespesasMensais extends Controller
             $mensagem = ["mensagem.erro" => "Erro ao alterar registro"];
         }
 
-        return to_route('despesas-mensais.index')->with($mensagem);
+        return to_route('receitas-mensais.index')->with($mensagem);
     }
 }

@@ -28,7 +28,7 @@
                     <a href="{{route('despesas-mensais.index')}}" class="list-group-item list-group-item-action" aria-current="true">
                         Tipos de Despesas Mensais
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+                    <a href="{{route('receitas-mensais.index')}}" class="list-group-item list-group-item-action">Tipos de Receitas Mensais</a>
                     <a href="#" class="list-group-item list-group-item-action">A third link item</a>
                     <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
                 </div>
