@@ -1,7 +1,7 @@
-<x-layout title="Tipos de Despesas Mensais">
+<x-layout title="Valores de Despesas">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Cadastrar Nova Despesa Mensal
+        Cadastrar Nova Despesa
     </button>
     @isset($mensagemSucesso)
     <div class="alert alert-success">
@@ -28,11 +28,10 @@
             @foreach ($tipoDespFixa as $desp)
             <tr>
                 <td>{{$desp->descricao_tdf}}</td>
-                <td>{{$desp->data_cobranca_tdf}}</td>
                 <td>Fixa</td>
                 <td><?= $desp->id_ativo_tdf == '1' ? "Ativo" : "Inativo" ?></td>
                 <td>
-                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropEdit" onclick="formEdit(1, '{{$desp->cod_tipo_desp_tdf}}', '{{$desp->descricao_tdf}}', '{{$desp->data_cobranca_tdf}}')">
+                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdropEdit" onclick="formEdit(1, '{{$desp->cod_tipo_desp_tdf}}', '{{$desp->descricao_tdf}}')">
                         <i class="fa-regular fa-pen-to-square text-decondary"></i>
                     </button> |
                     <a href="<?= $desp->id_ativo_tdf == '1' ? '/despesas-mensais/1/' . $desp->cod_tipo_desp_tdf . '/0' : '/despesas-mensais/1/' . $desp->cod_tipo_desp_tdf . '/1' ?>" class="btn btn-sm btn-danger">

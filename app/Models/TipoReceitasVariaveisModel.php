@@ -34,16 +34,16 @@ class TipoReceitasVariaveisModel extends Model
 
     public function edit($req)
     {
-        $data_upd = date("Y-m-d");
-        $query = "UPDATE cad_tipos_receitas_variaveis SET descricao_trv = ?, data_receita_trv = ?, dta_upd_trv = ? WHERE cod_tipo_rec_trv = ?";
-        $values = [$req->descricao_trv, $req->data_receita_trv, $data_upd, $req->id];
+        $query = "UPDATE cad_tipos_receitas_variaveis SET descricao_trv = ?, data_receita_trv = ? WHERE cod_tipo_rec_trv = ?";
+        $values = [$req->descricao_trv, $req->data_receita_trv, $req->id];
         return DB::update($query, $values);
     }
 
     public function disable($req)
     {
-        $query = "UPDATE cad_tipos_receitas_variaveis SET id_ativo_trv = ? WHERE cod_tipo_rec_trv = ?";
-        $values = [$req->status, $req->id];
+        $data_upd = date("Y-m-d");
+        $query = "UPDATE cad_tipos_receitas_variaveis SET id_ativo_trv = ?, dta_upd_trv = ? WHERE cod_tipo_rec_trv = ?";
+        $values = [$req->status, $data_upd, $req->id];
         return DB::update($query, $values);
     }
 }

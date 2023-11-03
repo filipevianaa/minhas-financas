@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DespesasFixasController;
+use App\Http\Controllers\DespesaValorController;
 use App\Http\Controllers\RelDespesaFixaValorController;
 use App\Http\Controllers\TipoDespesasMensais;
 use App\Http\Controllers\TipoDespesasVariaveisController;
@@ -22,13 +24,14 @@ Route::get('/', function () {
 });
 
 //tipos despesas mensais
-Route::get('/despesas-mensais', [TipoDespesasMensais::class, 'index'])->name('despesas-mensais.index');
-Route::post('/despesas-mensais', [TipoDespesasMensais::class, 'create'])->name('despesas-mensais.create');
-Route::post('/despesas-mensais/{tipo}/{id}', [TipoDespesasMensais::class, 'edit'])->name('despesas-mensais.edit');
-Route::get('/despesas-mensais/{tipo}/{id}/{status}', [TipoDespesasMensais::class, 'disable'])->name('despesas-mensais.disable');
+Route::get('/despesas-mensais', [DespesasFixasController::class, 'index'])->name('despesas-mensais.index');
+Route::post('/despesas-mensais', [DespesasFixasController::class, 'create'])->name('despesas-mensais.create');
+Route::post('/despesas-mensais/{id}', [DespesasFixasController::class, 'edit'])->name('despesas-mensais.edit');
+Route::get('/despesas-mensais/{id}/{status}', [DespesasFixasController::class, 'disable'])->name('despesas-mensais.disable');
 
-//associação de despesa fixa e valor
-Route::put('/despesas-fixas/{id}/valor/{id_valor}', [RelDespesaFixaValorController::class, 'edit'])->name('despesas-fixas-valor.edit');
+//cadastro de despesas
+Route::get('/despesas-valor', [DespesaValorController::class, 'index'])->name('despesas-valor.index');
+
 
 //tipos de receitas mensais
 Route::get('/receitas-mensais', [TipoReceitasMensais::class, 'index'])->name('receitas-mensais.index');

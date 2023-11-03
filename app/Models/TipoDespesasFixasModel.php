@@ -12,7 +12,7 @@ class TipoDespesasFixasModel extends Model
 
     public function listAll()
     {
-        $query = "select * from cad_tipos_despesas_fixas";
+        $query = "select * from cad_tipos_despesas_fixas where id_ativo_tdf = '1'";
         return DB::select($query);
     }
 
@@ -24,26 +24,26 @@ class TipoDespesasFixasModel extends Model
     public function create($req)
     {
         $data_ins = date("Y-m-d");
-        $query = "INSERT INTO cad_tipos_despesas_fixas (cod_user_tdf, descricao_tdf, data_cobranca_tdf, dta_ins_tdf) 
-        VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO cad_tipos_despesas_fixas (cod_user_tdf, descricao_tdf, dta_ins_tdf) 
+        VALUES (?, ?, ?)";
 
-        $values = [$req->cod_user_tdf, $req->descricao_tdf, $req->data_cobranca_tdf, $data_ins];
+        $values = [$req->cod_user_tdf, $req->descricao_tdf, $data_ins];
 
         return DB::insert($query, $values);
     }
 
     public function edit($req)
     {
-        $data_upd = date("Y-m-d");
-        $query = "UPDATE cad_tipos_despesas_fixas SET descricao_tdf = ?, data_cobranca_tdf = ?, dta_upd_tdf = ? WHERE cod_tipo_desp_tdf = ?";
-        $values = [$req->descricao_tdf, $req->data_cobranca_tdf, $data_upd, $req->id];
+        $query = "UPDATE cad_tipos_despesas_fixas SET descricao_tdf = ? WHERE cod_tipo_desp_tdf = ?";
+        $values = [$req->descricao_tdf, $req->id];
         return DB::update($query, $values);
     }
 
     public function disable($req)
     {
-        $query = "UPDATE cad_tipos_despesas_fixas SET id_ativo_tdf = ? WHERE cod_tipo_desp_tdf = ?";
-        $values = [$req->status, $req->id];
+        $data_upd = date("Y-m-d");
+        $query = "UPDATE cad_tipos_despesas_fixas SET id_ativo_tdf = ?, dta_upd_tdf = ? WHERE cod_tipo_desp_tdf = ?";
+        $values = [$req->status, $data_upd, $req->id];
         return DB::update($query, $values);
     }
 }

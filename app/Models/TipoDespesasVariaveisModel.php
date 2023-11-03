@@ -34,16 +34,16 @@ class TipoDespesasVariaveisModel extends Model
 
     public function edit($req)
     {
-        $data_upd = date("Y-m-d");
-        $query = "UPDATE cad_tipos_despesas_variaveis SET descricao_tdv = ?, data_cobranca_tdv = ?, dta_upd_tdv = ? WHERE cod_tipo_desp_tdv = ?";
-        $values = [$req->descricao_tdv, $req->data_cobranca_tdv, $data_upd, $req->id];
+        $query = "UPDATE cad_tipos_despesas_variaveis SET descricao_tdv = ?, data_cobranca_tdv = ? WHERE cod_tipo_desp_tdv = ?";
+        $values = [$req->descricao_tdv, $req->data_cobranca_tdv, $req->id];
         return DB::update($query, $values);
     }
 
     public function disable($req)
     {
-        $query = "UPDATE cad_tipos_despesas_variaveis SET id_ativo_tdv = ? WHERE cod_tipo_desp_tdv = ?";
-        $values = [$req->status, $req->id];
+        $data_upd = date("Y-m-d");
+        $query = "UPDATE cad_tipos_despesas_variaveis SET id_ativo_tdv = ?, dta_upd_tdv = ? WHERE cod_tipo_desp_tdv = ?";
+        $values = [$req->status, $data_upd, $req->id];
         return DB::update($query, $values);
     }
 }
